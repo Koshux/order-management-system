@@ -4,10 +4,11 @@ also features sorting and pagination. This tool will be seeing new improvements 
 
 #### Requirements to run
  - Latest version of MySQL (haven't tested on older versions, likely compatible)
+ - MySQL Server (e.g. community edition)
  - JDK/JRE 8
+ - Maven
 
 #### Additional Requirements to compile
- - Maven
  - Execute database schema and data scripts
 
 #### Installation and start-up
