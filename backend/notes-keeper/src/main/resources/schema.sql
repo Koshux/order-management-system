@@ -22,3 +22,31 @@ CREATE TABLE note_author (
     CONSTRAINT fk_note_author_note FOREIGN KEY (note_id) REFERENCES note (id),
     CONSTRAINT fk_note_author_author FOREIGN KEY (author_id) REFERENCES author (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE customer (
+    id              INT             NOT NULL PRIMARY KEY,
+    title           VARCHAR(20)     NOT NULL,
+    description     VARCHAR(100)    NOT NULL,
+    creation_date    TIMESTAMP       NOT NULL
+
+    customerName
+    phoneNumber
+    houseName
+    streetName
+    postCode
+
+    dogsCount
+
+    dogNames
+
+    limitDogCalories
+    dogAge
+
+    breed
+
+    allergies
+    healthIssues
+    behaviouralProblems
+    blacklistIngredients
+    toysTypes
+);
