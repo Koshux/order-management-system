@@ -29,24 +29,24 @@ CREATE TABLE customer (
     description     VARCHAR(100)    NOT NULL,
     creation_date    TIMESTAMP       NOT NULL
 
-    customerName
-    phoneNumber
-    houseName
-    streetName
-    postCode
-
-    dogsCount
-
-    dogNames
-
-    limitDogCalories
-    dogAge
-
-    breed
-
-    allergies
-    healthIssues
-    behaviouralProblems
-    blacklistIngredients
-    toysTypes
+    --customerName
+--    phoneNumber
+--    houseName
+--    streetName
+--    postCode
+--
+--    dogsCount
+--
+--    dogNames
+--
+--    limitDogCalories
+--    dogAge
+--
+--    breed
+--
+--    allergies
+--    healthIssues
+--    behaviouralProblems
+--    blacklistIngredients
+--    toysTypes
 );
