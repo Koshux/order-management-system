@@ -1,0 +1,51 @@
+Backend:
+- API
+	- Base
+		- /suppliers
+			- Supplier
+			- SupplierRepository
+		- /products
+			- Product
+			- ProductRepository
+		- /customers
+			- Customer
+			- CustomerRepository
+		- /orders
+			- Order
+			- OrderRepository
+	- Relationships
+		- /suppliers?include[suppliers]=products
+			- Supplier.products
+			- SupplierToProductRepository
+		- /customers?include[customers]=orders
+			- Customer.orders
+			- CustomerToOrdersRepository
+
+Frontend:
+	- Utilities:
+		- CSV parser for bulk import of (PapaParse or https://stackoverflow.com/a/44769625/7750124 or https://stackoverflow.com/a/54067609/7750124):
+			- Orders
+			- Products
+			- Customers
+			- Suppliers
+		- Drag'n'drop file to parse
+	- Components:
+		- Layout:
+			- For reusable grid based options.
+		- Cart
+		- Cart item
+		- Cart footer
+			- Shows total price
+			- Shows budget comparison (if provided)
+		- Boarding:
+			- Supplier
+				- CSV or manual registration
+			- Customer
+				- CSV or manual registration
+		- Order page
+			- Shows `product-list` and `cart` on the same page.
+		- Pending orders completion:
+			- (Things to do/buy)
+		- Product list
+		- Product item:
+			- Can be used in `tile-mode`
