@@ -1,0 +1,61 @@
+ERD:
+1. Boarding customers:
+ 1.1. Customer table
+	- Customer/User.ID
+	- Customer Name
+	- Customer Surname
+	- No. of dogs
+	- Dog.ID (per dog - FK links)
+ 1.2. Customers Dogs table
+	- Dog.ID
+	- Name
+	- BehaviourProblems.ID
+	- HealthIssues.ID
+	- Allergies/Avoid.ID
+	- ToysType.ID
+	- ChewsType.ID
+	- Breed.ID
+	- Breeds.Size
+ 1.3. Behaviour Problems table
+	- BehaviourProblems.ID
+	- Name
+ 1.4. Health Issues table
+	- HealthIssues.ID
+	- Type/Name
+ 1.5. Alergies/Avoid table
+	- Allergies/Avoid.ID
+	- Type/Name
+ 1.6. Toys Type table
+	- ToysType.ID
+	- Name
+ 1.7. Chews Type table
+	- ChewsType.ID
+	- Name
+ 1.8. Breeds table
+	- Breed ID
+	- Size
+	- Name
+ 1.9. Age Categories table
+	- AgeCategories.ID
+	- Type
+
+2. Boarding products:
+ 1.1. Product Categories table
+	- Dry Food
+	- Wet Food
+	- Raw Food
+	- Treat
+	- Toy
+	- Chew
+	- Supplement
+	- Grooming
+	- Puppy
+	- Other
+	- None
+ 1.3. Events table
+	- Event.ID
+	- Name
+ 1.4. Suppliers Table
+	- Suppliers.ID
+	- Name
+	- VAT (boolean)
