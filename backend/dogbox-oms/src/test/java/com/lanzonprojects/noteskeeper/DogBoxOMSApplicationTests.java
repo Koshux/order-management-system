@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional("transactionManager")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = NotesKeeperApplication.class)
-public class NotesKeeperApplicationTests {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = DogBoxOMSApplication.class)
+public class DogBoxOMSApplicationTests {
 
     @Rule
     public ExpectedException expectedException;

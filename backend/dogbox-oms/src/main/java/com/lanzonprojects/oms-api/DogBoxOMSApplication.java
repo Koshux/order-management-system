@@ -6,9 +6,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-public class NotesKeeperApplication {
+public class DogBoxOMSApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NotesKeeperApplication.class, args);
+        SpringApplication.run(DogBoxOMSApplication.class, args);
     }
 }
