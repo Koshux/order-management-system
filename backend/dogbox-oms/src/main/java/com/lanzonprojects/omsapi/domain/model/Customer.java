@@ -1,4 +1,4 @@
-package com.lanzonprojects.noteskeeper.domain.model;
+package com.lanzonprojects.omsapi.domain.model;
 
 import io.crnk.core.resource.annotations.JsonApiField;
 import io.crnk.core.resource.annotations.JsonApiId;

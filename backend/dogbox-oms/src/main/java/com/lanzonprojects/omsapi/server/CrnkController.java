@@ -1,4 +1,4 @@
-package com.lanzonprojects.noteskeeper.server;
+package com.lanzonprojects.omsapi.server;
 
 import java.util.Map;
 import java.util.stream.Collectors;

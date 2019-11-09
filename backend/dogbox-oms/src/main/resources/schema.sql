@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS notemaker;
+CREATE DATABASE IF NOT EXISTS dogboxoms;
 
 DROP TABLE IF EXISTS note, author, note_author;
 
-CREATE TABLE author (
+CREATE TABLE breeds (
     id      INT             NOT NULL PRIMARY KEY,
     title   VARCHAR(100)    NOT NULL
 );
@@ -14,11 +14,13 @@ CREATE TABLE note (
     creation_date    TIMESTAMP       NOT NULL
 );
 
-CREATE TABLE note_author (
-    note_id         INT     NOT NULL,
-    author_id       INT     NOT NULL,
+CREATE TABLE CUSTOMERORDERS ();
 
-    PRIMARY KEY(note_id, author_id),
+CREATE TABLE customers_orders (
+    order_id       INT     NOT NULL,
+    customer_id    INT     NOT NULL,
+
+    PRIMARY KEY(orderId, author_id),
     CONSTRAINT fk_note_author_note FOREIGN KEY (note_id) REFERENCES note (id),
     CONSTRAINT fk_note_author_author FOREIGN KEY (author_id) REFERENCES author (id) ON UPDATE CASCADE ON DELETE CASCADE
 );

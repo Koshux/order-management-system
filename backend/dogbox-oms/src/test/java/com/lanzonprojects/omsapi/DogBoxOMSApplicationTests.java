@@ -1,8 +1,7 @@
-package com.lanzonprojects.noteskeeper;
+package com.lanzonprojects.omsapi;
 
-import com.lanzonprojects.noteskeeper.client.NoteClient;
-import com.lanzonprojects.noteskeeper.domain.model.NoteResource;
-import com.lanzonprojects.noteskeeper.jooq.generated.tables.Note;
+import com.lanzonprojects.omsapi.domain.model.NoteResource;
+import com.lanzonprojects.omsapi.jooq.generated.tables.Note;
 import io.crnk.core.exception.BadRequestException;
 import io.crnk.core.resource.list.ResourceList;
 import org.jooq.DSLContext;
@@ -20,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional("transactionManager")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = DogBoxOMSApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = com.lanzonprojects.oms.DogBoxOMSApplication.class)
 public class DogBoxOMSApplicationTests {
 
     @Rule
@@ -30,7 +29,7 @@ public class DogBoxOMSApplicationTests {
     private DSLContext dslContext;
 
     @Autowired
-    private NoteClient noteClient;
+    private com.lanzonprojects.omsapi.client.OMSAPIClient noteClient;
 
     @Before
     public void setupTests() {

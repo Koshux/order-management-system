@@ -1,4 +1,4 @@
-package com.lanzonprojects.noteskeeper;
+package com.lanzonprojects.oms-api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

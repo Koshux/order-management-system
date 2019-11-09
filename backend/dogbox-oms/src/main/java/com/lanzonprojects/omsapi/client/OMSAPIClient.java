@@ -1,6 +1,6 @@
-package com.lanzonprojects.noteskeeper.client;
+package com.lanzonprojects.omsapi.client;
 
-import com.lanzonprojects.noteskeeper.domain.model.NoteResource;
+import com.lanzonprojects.omsapi.domain.model.NoteResource;
 import io.crnk.client.CrnkClient;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryV2;
@@ -15,9 +15,9 @@ import javax.annotation.PostConstruct;
  * @author lanzon-projects
  */
 @Component
-public class NoteClient {
+public class OMSAPIClient {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NoteClient.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.lanzonprojects.omsapi.client.OMSAPIClient.class);
 
     private CrnkClient crnkClient = new CrnkClient("http://localhost:8081/lanzonprojects/api");
     private ResourceRepositoryV2<NoteResource, Long> resourceRepositoryV2;

@@ -1,4 +1,4 @@
-package com.lanzonprojects.noteskeeper.jooq.configuration;
+package com.lanzonprojects.omsapi.jooq.configuration;
 
 import org.jooq.SQLDialect;
 import org.jooq.impl.DataSourceConnectionProvider;

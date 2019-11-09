@@ -1,7 +1,7 @@
-package com.lanzonprojects.noteskeeper.domain.repository;
+package com.lanzonprojects.omsapi.domain.repository;
 
-import com.lanzonprojects.noteskeeper.domain.model.Customer;
-import com.lanzonprojects.noteskeeper.jooq.generated.tables.Note;
+import com.lanzonprojects.omsapi.domain.model.Customer;
+import com.lanzonprojects.omsapi.jooq.generated.tables.Note;
 import io.crnk.core.exception.InternalServerErrorException;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
