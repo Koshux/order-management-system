@@ -1,4 +1,6 @@
 DROP DATABASE IF EXISTS dogbox_oms;
+CREATE DATABASE dogbox_oms;
+USE DATABASE dogbox_oms;
 SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS allergies;
@@ -140,8 +142,8 @@ CREATE TABLE nutritional_information (
     ingredient_id       INT           NOT NULL,
 
     PRIMARY KEY(id),
-    CONSTRAINT fk_financial_info_product FOREIGN KEY (product_id) REFERENCES products (id),
-    CONSTRAINT fk_financial_info_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients (id),
+    CONSTRAINT fk_nutritional_info_product FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT fk_nutritional_info_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients (id)
 );
 
 DROP TABLE IF EXISTS suitability_information;
@@ -154,8 +156,8 @@ CREATE TABLE suitability_information (
     attribute_id    INT         NOT NULL,
 
     PRIMARY KEY(id),
-    CONSTRAINT fk_suitability_information_size FOREIGN KEY (size_id) REFERENCES sizes (id),
-    CONSTRAINT fk_financial_info_product FOREIGN KEY (product_id) REFERENCES products (id)
+    CONSTRAINT fk_suitability_info_size FOREIGN KEY (size_id) REFERENCES sizes (id),
+    CONSTRAINT fk_suitability_info_product FOREIGN KEY (product_id) REFERENCES products (id)
 );
 
 DROP TABLE IF EXISTS breeds;
