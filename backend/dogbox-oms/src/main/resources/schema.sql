@@ -1,12 +1,10 @@
-DROP DATABASE IF EXISTS dogbox_oms;
-CREATE DATABASE dogbox_oms;
-USE DATABASE dogbox_oms;
+CREATE DATABASE IF NOT EXISTS dogbox_oms;
 SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS allergies;
 CREATE TABLE allergies (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -14,7 +12,7 @@ CREATE TABLE allergies (
 DROP TABLE IF EXISTS attributes;
 CREATE TABLE attributes (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -22,15 +20,15 @@ CREATE TABLE attributes (
 DROP TABLE IF EXISTS behavioural_problems;
 CREATE TABLE behavioural_problems (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS events;
-CREATE TABLE events (
+DROP TABLE IF EXISTS EVENTS;
+CREATE TABLE EVENTS (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -38,7 +36,7 @@ CREATE TABLE events (
 DROP TABLE IF EXISTS flavours;
 CREATE TABLE flavours (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -46,7 +44,7 @@ CREATE TABLE flavours (
 DROP TABLE IF EXISTS health_issues;
 CREATE TABLE health_issues (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -54,7 +52,7 @@ CREATE TABLE health_issues (
 DROP TABLE IF EXISTS ingredients;
 CREATE TABLE ingredients (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -62,7 +60,7 @@ CREATE TABLE ingredients (
 DROP TABLE IF EXISTS product_types;
 CREATE TABLE product_types (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -70,7 +68,7 @@ CREATE TABLE product_types (
 DROP TABLE IF EXISTS sizes;
 CREATE TABLE sizes (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -78,7 +76,7 @@ CREATE TABLE sizes (
 DROP TABLE IF EXISTS suppliers;
 CREATE TABLE suppliers (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -86,7 +84,7 @@ CREATE TABLE suppliers (
 DROP TABLE IF EXISTS toy_types;
 CREATE TABLE toy_types (
     id     INT            NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(50)    NOT NULL,
+    NAME   VARCHAR(50)    NOT NULL,
 
     PRIMARY KEY(id)
 );
@@ -94,7 +92,7 @@ CREATE TABLE toy_types (
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
     id                  INT            NOT NULL AUTO_INCREMENT,
-    name                VARCHAR(100)   NOT NULL,
+    NAME                VARCHAR(100)   NOT NULL,
     brand               VARCHAR(100)   NOT NULL,
     weight              VARCHAR(100)   NOT NULL,
     sku                 VARCHAR(100)   NOT NULL,
@@ -163,7 +161,7 @@ CREATE TABLE suitability_information (
 DROP TABLE IF EXISTS breeds;
 CREATE TABLE breeds (
     id     INT             NOT NULL AUTO_INCREMENT,
-    name   VARCHAR(100)    NOT NULL,
+    NAME   VARCHAR(100)    NOT NULL,
     size_id INT            NOT NULL,
 
     PRIMARY KEY(id),
@@ -174,7 +172,7 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
     id              INT             NOT NULL AUTO_INCREMENT,
     creation_date   TIMESTAMP       NOT NULL,
-    name            VARCHAR(100)    NOT NULL,
+    NAME            VARCHAR(100)    NOT NULL,
     phone_number    VARCHAR(12)     NOT NULL,
     house_name      VARCHAR(20)     NOT NULL,
     addr_line_1     VARCHAR(35)     NOT NULL,
@@ -183,17 +181,17 @@ CREATE TABLE customers (
     post_code       VARCHAR(20)     NOT NULL,
 
     PRIMARY KEY(id)
-)
+);
 
 DROP TABLE IF EXISTS dogs;
 CREATE TABLE dogs (
     id                      INT           NOT NULL AUTO_INCREMENT,
     age                     VARCHAR(3)    NOT NULL,
     limitCalories           VARCHAR(6)    NOT NULL,
-    name                    VARCHAR(45)   NOT NULL,
-    breed_id                VARCHAR(6)    NOT NULL,
+    NAME                    VARCHAR(45)   NOT NULL,
+    breed_id                INT    	  NOT NULL,
 
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
     CONSTRAINT fk_dogs_breed FOREIGN KEY (breed_id) REFERENCES breeds (id)
 );
 
@@ -205,10 +203,9 @@ CREATE TABLE dogs_information (
     health_issue_id         INT NOT NULL,
     behioural_problem_id    INT NOT NULL,
 
-    PRIMARY KEY(product_id, ingredient_id),
+    PRIMARY KEY(dog_id),
     CONSTRAINT fk_dogs_information_dog FOREIGN KEY (dog_id)
         REFERENCES dogs (id),
-
     CONSTRAINT fk_dogs_information_allergy FOREIGN KEY (allergy_id)
         REFERENCES allergies (id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_dogs_information_toy_type FOREIGN KEY (allergy_id)
@@ -225,8 +222,8 @@ CREATE TABLE products_ingredients (
     ingredient_id    INT     NOT NULL,
 
     PRIMARY KEY(product_id, ingredient_id),
-    CONSTRAINT fk_customers_dogs_dog FOREIGN KEY (product_id) REFERENCES products (id),
-    CONSTRAINT fk_customers_dogs_customer FOREIGN KEY (customer_id) REFERENCES customers (id) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT fk_customers_dogs_product FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT fk_customers_dogs_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS customers_dogs;
@@ -249,3 +246,4 @@ CREATE TABLE customers_dogs (
 --        CONSTRAINT fk_customers_orders_customer FOREIGN KEY (customer_id) REFERENCES author (id) ON UPDATE CASCADE ON DELETE CASCADE
 --    );
 SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
