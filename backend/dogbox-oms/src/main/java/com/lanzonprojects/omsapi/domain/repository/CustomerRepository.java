@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by @lanzon-projects.
  */
@@ -30,7 +32,10 @@ public class CustomerRepository extends ResourceRepositoryBase<Customer, Long> {
 
     @Override
     public ResourceList<Customer> findAll(QuerySpec querySpec) {
-        return null;
+        final List<Customer> customers = dslContext.select().from(Customer.CUSTOMER).fetchInto(Customer.class);
+        LOGGER.debug("Found notes: {}", customers);
+
+        return querySpec.apply(customers);
     }
 
     @Override

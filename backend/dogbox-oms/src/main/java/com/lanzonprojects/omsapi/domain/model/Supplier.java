@@ -6,10 +6,10 @@ import io.crnk.core.resource.annotations.JsonApiResource;
 import org.hibernate.validator.constraints.Length;
 
 /**
- * @author lanzon-projects
+ * @author lanzon-projects.
  */
-@JsonApiResource(type = "breeds")
-public class Breed {
+@JsonApiResource(type = "suppliers")
+public class Supplier {
 
     @JsonApiId
     @JsonApiField(patchable = false, postable = false)
@@ -17,9 +17,6 @@ public class Breed {
 
     @Length(max = 100)
     private String name;
-
-    @Length(max = 3)
-    private String size;
 
     public long getId() {
         return id;
@@ -37,20 +34,11 @@ public class Breed {
         this.name = name;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Breed{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", size='").append(size).append('\'');
         sb.append('}');
         return sb.toString();
     }

@@ -201,6 +201,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>docker-dogbox-oms</finalName>
     </build>
 
 </project>

@@ -23,7 +23,7 @@ public class Customer {
     @JsonApiField(patchable = false, postable = false)
     private Timestamp creationDate;
 
-    @Length(max = 50)
+    @Length(max = 100)
     private String name;
 
     @Length(max = 12)

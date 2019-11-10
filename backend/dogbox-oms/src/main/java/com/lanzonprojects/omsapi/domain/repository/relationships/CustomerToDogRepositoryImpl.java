@@ -1,4 +1,4 @@
-package com.lanzonprojects.omsapi.domain.repository;
+package com.lanzonprojects.omsapi.domain.repository.relationships;
 
 import com.lanzonprojects.omsapi.domain.model.Customer;
 import com.lanzonprojects.omsapi.domain.model.Dog;
