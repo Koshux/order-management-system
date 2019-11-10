@@ -1,6 +1,6 @@
 package com.lanzonprojects.omsapi.client;
 
-import com.lanzonprojects.omsapi.domain.model.NoteResource;
+import com.lanzonprojects.omsapi.domain.model.Customer;
 import io.crnk.client.CrnkClient;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryV2;
@@ -20,25 +20,25 @@ public class OMSAPIClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(com.lanzonprojects.omsapi.client.OMSAPIClient.class);
 
     private CrnkClient crnkClient = new CrnkClient("http://localhost:8081/lanzonprojects/api");
-    private ResourceRepositoryV2<NoteResource, Long> resourceRepositoryV2;
+    private ResourceRepositoryV2<Customer, Long> resourceRepositoryV2;
 
     @PostConstruct
     public void init() {
-        resourceRepositoryV2 = crnkClient.getRepositoryForType(NoteResource.class);
+        resourceRepositoryV2 = crnkClient.getRepositoryForType(Customer.class);
     }
 
-    public ResourceList<NoteResource> findAll() {
-        final ResourceList<NoteResource> noteResources = resourceRepositoryV2.findAll(new QuerySpec(NoteResource.class));
+    public ResourceList<Customer> findAll() {
+        final ResourceList<Customer> customers = resourceRepositoryV2.findAll(new QuerySpec(Customer.class));
 
-        LOGGER.info("found {}", noteResources.toString());
-        return noteResources;
+        LOGGER.info("found {}", customers.toString());
+        return customers;
     }
 
-    public NoteResource create(NoteResource entity) {
-        NoteResource noteResource = resourceRepositoryV2.create(entity);
+    public Customer create(Customer entity) {
+        Customer customer = resourceRepositoryV2.create(entity);
 
-        LOGGER.info("created {}", noteResource);
-        return noteResource;
+        LOGGER.info("created {}", customer);
+        return customer;
     }
 
 

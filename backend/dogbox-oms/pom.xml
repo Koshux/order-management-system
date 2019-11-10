@@ -110,7 +110,7 @@
                         <configuration>
                             <jdbc>
                                 <driver>org.h2.Driver</driver>
-                                <url>jdbc:h2:~/dogbox-oms</url>
+                                <url>jdbc:h2:~/dogbox_oms</url>
                             </jdbc>
                             <generator>
                                 <name>org.jooq.util.DefaultGenerator</name>
@@ -152,7 +152,7 @@
                         <configuration>
                             <jdbc>
                                 <driver>com.mysql.cj.jdbc.Driver</driver>
-                                <url>jdbc:mysql://localhost:3306/dogbox-oms?serverTimezone=UTC&amp;useSSL=false</url>
+                                <url>jdbc:mysql://localhost:3306/dogbox_oms?serverTimezone=UTC&amp;useSSL=false</url>
                                 <user>root</user>
                                 <password>root</password>
                             </jdbc>
@@ -162,7 +162,7 @@
                                     <name>org.jooq.util.mysql.MySQLDatabase</name>
                                     <includes>.*</includes>
                                     <excludes />
-                                    <inputSchema>dogbox-oms</inputSchema>
+                                    <inputSchema>dogbox_oms</inputSchema>
                                 </database>
                                 <target>
                                     <packageName>com.lanzonprojects.omsapi.jooq.generated</packageName>

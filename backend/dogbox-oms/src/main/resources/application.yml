@@ -1,5 +1,5 @@
 crnk:
-  resourcePackage: com.lanzonprojects.noteskeeper.domain
+  resourcePackage: com.lanzonprojects.omsapi.domain
   domainName: http://localhost:8081/lanzonprojects
   pathPrefix: /api
   default-page-limit: 20
