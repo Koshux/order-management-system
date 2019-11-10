@@ -36,7 +36,7 @@ public class NoteRepositoryImpl extends ResourceRepositoryBase<NoteResource, Lon
     }
 
     @Override
-    public synchronized ResourceList<NoteResource> findAll(QuerySpec querySpec) {
+    public ResourceList<NoteResource> findAll(QuerySpec querySpec) {
         final List<NoteResource> noteResources = dslContext.select().from(Note.NOTE).fetchInto(NoteResource.class);
         LOGGER.debug("Found notes: {}", noteResources);
 
@@ -44,7 +44,7 @@ public class NoteRepositoryImpl extends ResourceRepositoryBase<NoteResource, Lon
     }
 
     @Override
-    public synchronized <S extends NoteResource> S create(S entity) {
+    public <S extends NoteResource> S create(S entity) {
         final Note noteTable = Note.NOTE;
 
         // Column-size validation against note-title input.
@@ -94,7 +94,7 @@ public class NoteRepositoryImpl extends ResourceRepositoryBase<NoteResource, Lon
     }
 
     @Override
-    public synchronized void delete(Long id) {
+    public void delete(Long id) {
         int execute = dslContext.deleteFrom(Note.NOTE).where(Note.NOTE.ID.equal(Math.toIntExact(id))).execute();
 
         if (execute == 0) {

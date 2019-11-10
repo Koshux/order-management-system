@@ -1,4 +1,4 @@
-package com.lanzonprojects.oms-api;
+package com.lanzonprojects.omsapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

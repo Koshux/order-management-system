@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional("transactionManager")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = com.lanzonprojects.oms.DogBoxOMSApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = DogBoxOMSApplication.class)
 public class DogBoxOMSApplicationTests {
 
     @Rule

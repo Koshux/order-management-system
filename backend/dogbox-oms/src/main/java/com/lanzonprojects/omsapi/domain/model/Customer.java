@@ -1,14 +1,17 @@
 package com.lanzonprojects.omsapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.crnk.core.resource.annotations.JsonApiField;
 import io.crnk.core.resource.annotations.JsonApiId;
+import io.crnk.core.resource.annotations.JsonApiRelation;
 import io.crnk.core.resource.annotations.JsonApiResource;
+import org.hibernate.validator.constraints.Length;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * Created by james on 27/10/2019.
+ * @author lanzon-projects
  */
 @JsonApiResource(type = "customers")
 public class Customer {
@@ -20,21 +23,23 @@ public class Customer {
     @JsonApiField(patchable = false, postable = false)
     private Timestamp creationDate;
 
-    private String customerName;
+    @Length(max = 50)
+    private String name;
+
+    @Length(max = 12)
     private String phoneNumber;
+
+    @Length(max = 20)
     private String houseName;
+
+    @Length(max = 35)
     private String streetName;
+
+    @Length(max = 20)
     private String postCode;
-    private int dogsCount;
-    private List<String> dogNames;
-    private int limitDogCalories;
-    private int dogAge;
-    private String breed;
-    private List<String> allergies;
-    private List<String> healthIssues;
-    private List<String> behaviouralProblems;
-    private List<String> blacklistIngredients;
-    private List<String> toysTypes;
+
+    @JsonApiRelation(opposite = "dogs")
+    private List<Dog> dogs;
 
     public long getId() {
         return id;
@@ -52,12 +57,12 @@ public class Customer {
         this.creationDate = creationDate;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getName() {
+        return name;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhoneNumber() {
@@ -92,84 +97,12 @@ public class Customer {
         this.postCode = postCode;
     }
 
-    public int getDogsCount() {
-        return dogsCount;
+    public List<Dog> getDogs() {
+        return dogs;
     }
 
-    public void setDogsCount(int dogsCount) {
-        this.dogsCount = dogsCount;
-    }
-
-    public List<String> getDogNames() {
-        return dogNames;
-    }
-
-    public void setDogNames(List<String> dogNames) {
-        this.dogNames = dogNames;
-    }
-
-    public int getLimitDogCalories() {
-        return limitDogCalories;
-    }
-
-    public void setLimitDogCalories(int limitDogCalories) {
-        this.limitDogCalories = limitDogCalories;
-    }
-
-    public int getDogAge() {
-        return dogAge;
-    }
-
-    public void setDogAge(int dogAge) {
-        this.dogAge = dogAge;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
-    public List<String> getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(List<String> allergies) {
-        this.allergies = allergies;
-    }
-
-    public List<String> getHealthIssues() {
-        return healthIssues;
-    }
-
-    public void setHealthIssues(List<String> healthIssues) {
-        this.healthIssues = healthIssues;
-    }
-
-    public List<String> getBehaviouralProblems() {
-        return behaviouralProblems;
-    }
-
-    public void setBehaviouralProblems(List<String> behaviouralProblems) {
-        this.behaviouralProblems = behaviouralProblems;
-    }
-
-    public List<String> getBlacklistIngredients() {
-        return blacklistIngredients;
-    }
-
-    public void setBlacklistIngredients(List<String> blacklistIngredients) {
-        this.blacklistIngredients = blacklistIngredients;
-    }
-
-    public List<String> getToysTypes() {
-        return toysTypes;
-    }
-
-    public void setToysTypes(List<String> toysTypes) {
-        this.toysTypes = toysTypes;
+    public void setDogs(List<Dog> dogs) {
+        this.dogs = dogs;
     }
 
     @Override
@@ -177,21 +110,12 @@ public class Customer {
         final StringBuilder sb = new StringBuilder("Customer{");
         sb.append("id=").append(id);
         sb.append(", creationDate=").append(creationDate);
-        sb.append(", customerName='").append(customerName).append('\'');
+        sb.append(", name='").append(name).append('\'');
         sb.append(", phoneNumber='").append(phoneNumber).append('\'');
         sb.append(", houseName='").append(houseName).append('\'');
         sb.append(", streetName='").append(streetName).append('\'');
         sb.append(", postCode='").append(postCode).append('\'');
-        sb.append(", dogsCount=").append(dogsCount);
-        sb.append(", dogNames=").append(dogNames);
-        sb.append(", limitDogCalories=").append(limitDogCalories);
-        sb.append(", dogAge=").append(dogAge);
-        sb.append(", breed='").append(breed).append('\'');
-        sb.append(", allergies=").append(allergies);
-        sb.append(", healthIssues=").append(healthIssues);
-        sb.append(", behaviouralProblems=").append(behaviouralProblems);
-        sb.append(", blacklistIngredients=").append(blacklistIngredients);
-        sb.append(", toysTypes=").append(toysTypes);
+        sb.append(", dogs=").append(dogs);
         sb.append('}');
         return sb.toString();
     }

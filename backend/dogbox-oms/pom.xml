@@ -152,7 +152,7 @@
                         <configuration>
                             <jdbc>
                                 <driver>com.mysql.cj.jdbc.Driver</driver>
-                                <url>jdbc:mysql://localhost:3306/notemaker?serverTimezone=UTC&amp;useSSL=false</url>
+                                <url>jdbc:mysql://localhost:3306/dogbox-oms?serverTimezone=UTC&amp;useSSL=false</url>
                                 <user>root</user>
                                 <password>root</password>
                             </jdbc>
@@ -162,7 +162,7 @@
                                     <name>org.jooq.util.mysql.MySQLDatabase</name>
                                     <includes>.*</includes>
                                     <excludes />
-                                    <inputSchema>notemaker</inputSchema>
+                                    <inputSchema>dogbox-oms</inputSchema>
                                 </database>
                                 <target>
                                     <packageName>com.lanzonprojects.omsapi.jooq.generated</packageName>
