@@ -1,10 +1,7 @@
 package com.lanzonprojects.omsapi.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.crnk.core.resource.annotations.JsonApiField;
-import io.crnk.core.resource.annotations.JsonApiId;
-import io.crnk.core.resource.annotations.JsonApiRelation;
-import io.crnk.core.resource.annotations.JsonApiResource;
+import io.crnk.core.resource.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
 import java.sql.Timestamp;
@@ -38,7 +35,7 @@ public class Customer {
     @Length(max = 20)
     private String postCode;
 
-    @JsonApiRelation(opposite = "dogs")
+    @JsonApiRelation(opposite = "dogs", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<Dog> dogs;
 
     public long getId() {

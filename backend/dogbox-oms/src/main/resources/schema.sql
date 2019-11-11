@@ -186,7 +186,7 @@ CREATE TABLE customers (
 DROP TABLE IF EXISTS dogs;
 CREATE TABLE dogs (
     id                      INT           NOT NULL AUTO_INCREMENT,
-    age                     VARCHAR(3)    NOT NULL,
+    age                     VARCHAR(20)   NOT NULL,
     limitCalories           VARCHAR(6)    NOT NULL,
     NAME                    VARCHAR(45)   NOT NULL,
     breed_id                INT    	  NOT NULL,
@@ -232,7 +232,7 @@ CREATE TABLE customers_dogs (
     customer_id    INT     NOT NULL,
 
     PRIMARY KEY(dog_id, customer_id),
-    CONSTRAINT fk_customers_dogs_dog FOREIGN KEY (dog_id) REFERENCES orders (id),
+    CONSTRAINT fk_customers_dogs_dog FOREIGN KEY (dog_id) REFERENCES dogs (id),
     CONSTRAINT fk_customers_dogs_customer FOREIGN KEY (customer_id) REFERENCES customers (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
