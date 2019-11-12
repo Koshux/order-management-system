@@ -1,25 +1,19 @@
 package com.lanzonprojects.omsapi.domain.repository;
 
-import com.lanzonprojects.omsapi.domain.model.Customer;
 import com.lanzonprojects.omsapi.domain.model.Dog;
-import com.lanzonprojects.omsapi.jooq.generated.tables.Customers;
 import com.lanzonprojects.omsapi.jooq.generated.tables.Dogs;
 import io.crnk.core.exception.InternalServerErrorException;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
 import io.crnk.core.resource.list.ResourceList;
 import org.jooq.DSLContext;
-import org.jooq.Record;
-import org.jooq.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author lanzon-projects.
@@ -38,19 +32,22 @@ public class DogRepository  extends ResourceRepositoryBase<Dog, Long> {
 
     @Override
     public ResourceList<Dog> findAll(QuerySpec querySpec) {
-        final Result<Record> dogs = dslContext.select().from(Dogs.DOGS).fetch();
-        final List<Dog> dogsList = dogs
+        final List<Dog> dogs = dslContext
+                .select(Dogs.DOGS.ID, Dogs.DOGS.AGE, Dogs.DOGS.LIMITCALORIES, Dogs.DOGS.NAME)
+                .from(Dogs.DOGS)
+                .fetchInto(Dog.class);
+        /*final List<Dog> dogsList = dogs
                 .stream()
                 .map(dog -> {
                     Dog doggy = new Dog();
-                    /*doggy.setAge(dog.getValue(Dogs.DOGS.AGE));*/
+                    *//*doggy.setAge(dog.getValue(Dogs.DOGS.AGE));*//*
                     doggy.setLimitCalories(Integer.parseInt(dog.getValue(Dogs.DOGS.LIMITCALORIES)));
                     return doggy;
                 })
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
         LOGGER.debug("Found notes: {}", dogs);
 
-        return querySpec.apply(dogsList);
+        return querySpec.apply(dogs);
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.lanzonprojects.omsapi.domain.model;
 
-import io.crnk.core.resource.annotations.JsonApiField;
-import io.crnk.core.resource.annotations.JsonApiId;
-import io.crnk.core.resource.annotations.JsonApiRelation;
-import io.crnk.core.resource.annotations.JsonApiResource;
+import io.crnk.core.resource.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
@@ -27,19 +24,19 @@ public class Dog {
     @Length(max = 45)
     private String name;
 
-    @JsonApiRelation
+    @JsonApiRelation(opposite = "breeds")
     private Breed breeds;
 
-    @JsonApiRelation
+    @JsonApiRelation(opposite = "allergies")
     private List<Allergy> allergies;
 
-    @JsonApiRelation
+    @JsonApiRelation(opposite = "toysTypes")
     private List<ToyType> toysTypes;
 
-    @JsonApiRelation
+    @JsonApiRelation(opposite = "healthIssues")
     private List<HealthIssue> healthIssues;
 
-    @JsonApiRelation
+    @JsonApiRelation(opposite = "behaviouralProblems")
     private List<BehaviouralProblem> behaviouralProblems;
 
     public long getId() {
