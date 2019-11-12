@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Component
 @Transactional
-public class DogRepository  extends ResourceRepositoryBase<Dog, Long> {
+public class DogRepository extends ResourceRepositoryBase<Dog, Long> {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerRepository.class);
 
     @Autowired
