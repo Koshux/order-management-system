@@ -123,6 +123,7 @@ public class Keys {
 	// -------------------------------------------------------------------------
 
 	public static final ForeignKey<BreedsRecord, SizesRecord> FK_BREEDS_SIZE = ForeignKeys0.FK_BREEDS_SIZE;
+	public static final ForeignKey<CustomersDogsRecord, DogsRecord> FK_CUSTOMERS_DOGS_DOG = ForeignKeys0.FK_CUSTOMERS_DOGS_DOG;
 	public static final ForeignKey<CustomersDogsRecord, CustomersRecord> FK_CUSTOMERS_DOGS_CUSTOMER = ForeignKeys0.FK_CUSTOMERS_DOGS_CUSTOMER;
 	public static final ForeignKey<DogsRecord, BreedsRecord> FK_DOGS_BREED = ForeignKeys0.FK_DOGS_BREED;
 	public static final ForeignKey<DogsInformationRecord, DogsRecord> FK_DOGS_INFORMATION_DOG = ForeignKeys0.FK_DOGS_INFORMATION_DOG;
@@ -195,6 +196,7 @@ public class Keys {
 
 	private static class ForeignKeys0 extends AbstractKeys {
 		public static final ForeignKey<BreedsRecord, SizesRecord> FK_BREEDS_SIZE = createForeignKey(com.lanzonprojects.omsapi.jooq.generated.Keys.KEY_SIZES_PRIMARY, Breeds.BREEDS, Breeds.BREEDS.SIZE_ID);
+		public static final ForeignKey<CustomersDogsRecord, DogsRecord> FK_CUSTOMERS_DOGS_DOG = createForeignKey(com.lanzonprojects.omsapi.jooq.generated.Keys.KEY_DOGS_PRIMARY, CustomersDogs.CUSTOMERS_DOGS, CustomersDogs.CUSTOMERS_DOGS.DOG_ID);
 		public static final ForeignKey<CustomersDogsRecord, CustomersRecord> FK_CUSTOMERS_DOGS_CUSTOMER = createForeignKey(com.lanzonprojects.omsapi.jooq.generated.Keys.KEY_CUSTOMERS_PRIMARY, CustomersDogs.CUSTOMERS_DOGS, CustomersDogs.CUSTOMERS_DOGS.CUSTOMER_ID);
 		public static final ForeignKey<DogsRecord, BreedsRecord> FK_DOGS_BREED = createForeignKey(com.lanzonprojects.omsapi.jooq.generated.Keys.KEY_BREEDS_PRIMARY, Dogs.DOGS, Dogs.DOGS.BREED_ID);
 		public static final ForeignKey<DogsInformationRecord, DogsRecord> FK_DOGS_INFORMATION_DOG = createForeignKey(com.lanzonprojects.omsapi.jooq.generated.Keys.KEY_DOGS_PRIMARY, DogsInformation.DOGS_INFORMATION, DogsInformation.DOGS_INFORMATION.DOG_ID);

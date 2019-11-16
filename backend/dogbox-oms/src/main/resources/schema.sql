@@ -186,10 +186,10 @@ CREATE TABLE customers (
 DROP TABLE IF EXISTS dogs;
 CREATE TABLE dogs (
     id                      INT           NOT NULL AUTO_INCREMENT,
-    age                     VARCHAR(20)   NOT NULL,
-    limitCalories           VARCHAR(6)    NOT NULL,
+    age                     VARCHAR(10)   NOT NULL,
+    limitCalories           INT           NOT NULL,
     NAME                    VARCHAR(45)   NOT NULL,
-    breed_id                INT    	  NOT NULL,
+    breed_id                INT    	      NOT NULL,
 
     PRIMARY KEY(id),
     CONSTRAINT fk_dogs_breed FOREIGN KEY (breed_id) REFERENCES breeds (id)

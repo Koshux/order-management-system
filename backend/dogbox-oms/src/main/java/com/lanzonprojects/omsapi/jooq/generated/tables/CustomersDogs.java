@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CustomersDogs extends TableImpl<CustomersDogsRecord> {
 
-	private static final long serialVersionUID = 218626375;
+	private static final long serialVersionUID = 1780191609;
 
 	/**
 	 * The reference instance of <code>dogbox_oms.customers_dogs</code>
@@ -102,7 +102,7 @@ public class CustomersDogs extends TableImpl<CustomersDogsRecord> {
 	 */
 	@Override
 	public List<ForeignKey<CustomersDogsRecord, ?>> getReferences() {
-		return Arrays.<ForeignKey<CustomersDogsRecord, ?>>asList(Keys.FK_CUSTOMERS_DOGS_CUSTOMER);
+		return Arrays.<ForeignKey<CustomersDogsRecord, ?>>asList(Keys.FK_CUSTOMERS_DOGS_DOG, Keys.FK_CUSTOMERS_DOGS_CUSTOMER);
 	}
 
 	/**

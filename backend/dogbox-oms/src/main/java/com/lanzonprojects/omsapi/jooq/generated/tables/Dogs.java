@@ -35,7 +35,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Dogs extends TableImpl<DogsRecord> {
 
-	private static final long serialVersionUID = -1062265295;
+	private static final long serialVersionUID = -1249752078;
 
 	/**
 	 * The reference instance of <code>dogbox_oms.dogs</code>
@@ -58,12 +58,12 @@ public class Dogs extends TableImpl<DogsRecord> {
 	/**
 	 * The column <code>dogbox_oms.dogs.age</code>.
 	 */
-	public final TableField<DogsRecord, String> AGE = createField("age", org.jooq.impl.SQLDataType.VARCHAR.length(3).nullable(false), this, "");
+	public final TableField<DogsRecord, String> AGE = createField("age", org.jooq.impl.SQLDataType.VARCHAR.length(10).nullable(false), this, "");
 
 	/**
 	 * The column <code>dogbox_oms.dogs.limitCalories</code>.
 	 */
-	public final TableField<DogsRecord, String> LIMITCALORIES = createField("limitCalories", org.jooq.impl.SQLDataType.VARCHAR.length(6).nullable(false), this, "");
+	public final TableField<DogsRecord, Integer> LIMITCALORIES = createField("limitCalories", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
 	/**
 	 * The column <code>dogbox_oms.dogs.NAME</code>.

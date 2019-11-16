@@ -31,6 +31,18 @@ public class BreedRepository extends ResourceRepositoryBase<Breed, Long> {
     }
 
     @Override
+    public Breed findOne(Long id, QuerySpec querySpec) {
+        final Breed breed = dslContext
+                .select()
+                .from(Breeds.BREEDS)
+                .where(Breeds.BREEDS.ID.eq(Math.toIntExact(id)))
+                .fetchOneInto(Breed.class);
+
+        LOGGER.debug("Found breed: {}", breed);
+        return breed;
+    }
+
+    @Override
     public ResourceList<Breed> findAll(QuerySpec querySpec) {
         final List<Breed> breeds = dslContext
                 .select()

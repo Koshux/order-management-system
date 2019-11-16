@@ -19,7 +19,7 @@ public class Breed {
     private String name;
 
     @Length(max = 3)
-    private String size;
+    private int sizeId;
 
     public long getId() {
         return id;
@@ -37,12 +37,12 @@ public class Breed {
         this.name = name;
     }
 
-    public String getSize() {
-        return size;
+    public int getSizeId() {
+        return sizeId;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setSizeId(int sizeId) {
+        this.sizeId = sizeId;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Breed {
         final StringBuilder sb = new StringBuilder("Breed{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", size='").append(size).append('\'');
+        sb.append(", sizeId='").append(sizeId).append('\'');
         sb.append('}');
         return sb.toString();
     }

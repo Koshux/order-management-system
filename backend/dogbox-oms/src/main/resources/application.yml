@@ -1,9 +1,4 @@
 crnk:
-  resourcePackage: com.lanzonprojects.omsapi.domain
-  domainName: http://localhost:8081/lanzonprojects
-  pathPrefix: /api/oms
+  resource-package: com.lanzonprojects.omsapi.domain
+  path-prefix: /oms
   default-page-limit: 20
-
-server:
-  context-path: /lanzonprojects
-  port: 8081

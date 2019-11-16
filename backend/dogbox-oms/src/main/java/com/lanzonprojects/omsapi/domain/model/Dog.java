@@ -16,7 +16,7 @@ public class Dog {
     private long id;
 
     @Length(max = 2)
-    private int age;
+    private String age;
 
     @Length(max = 6)
     private int limitCalories;
@@ -24,19 +24,22 @@ public class Dog {
     @Length(max = 45)
     private String name;
 
-    @JsonApiRelation(opposite = "breeds")
-    private Breed breeds;
+    @JsonApiRelationId
+    private long breedId;
 
-    @JsonApiRelation(opposite = "allergies")
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    private Breed breed;
+
+    @JsonApiRelation//(mappedBy = "dogAllergies", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<Allergy> allergies;
 
-    @JsonApiRelation(opposite = "toysTypes")
+    @JsonApiRelation//(mappedBy = "dogToysTypes", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<ToyType> toysTypes;
 
-    @JsonApiRelation(opposite = "healthIssues")
+    @JsonApiRelation//(mappedBy = "dogHealthIssues", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<HealthIssue> healthIssues;
 
-    @JsonApiRelation(opposite = "behaviouralProblems")
+    @JsonApiRelation//(mappedBy = "dogBehaviouralProblems", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<BehaviouralProblem> behaviouralProblems;
 
     public long getId() {
@@ -47,11 +50,11 @@ public class Dog {
         this.id = id;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -71,12 +74,13 @@ public class Dog {
         this.name = name;
     }
 
-    public Breed getBreeds() {
-        return breeds;
+    public Breed getBreed() {
+        return breed;
     }
 
-    public void setBreeds(Breed breeds) {
-        this.breeds = breeds;
+    public void setBreed(Breed breed) {
+        this.breedId = breed != null ? breed.getId() : null;
+        this.breed = breed;
     }
 
     public List<Allergy> getAllergies() {
@@ -111,14 +115,24 @@ public class Dog {
         this.behaviouralProblems = behaviouralProblems;
     }
 
+    public long getBreedId() {
+        return breedId;
+    }
+
+    public void setBreedId(long breedId) {
+        this.breedId = breedId;
+        this.breed = null;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Dog{");
         sb.append("id=").append(id);
-        sb.append(", age=").append(age);
+        sb.append(", age='").append(age).append('\'');
         sb.append(", limitCalories=").append(limitCalories);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", breeds=").append(breeds);
+        sb.append(", breedId=").append(breedId);
+        sb.append(", breeds=").append(breed);
         sb.append(", allergies=").append(allergies);
         sb.append(", toysTypes=").append(toysTypes);
         sb.append(", healthIssues=").append(healthIssues);

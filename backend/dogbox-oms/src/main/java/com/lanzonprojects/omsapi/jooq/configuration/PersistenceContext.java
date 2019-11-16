@@ -1,11 +1,13 @@
 package com.lanzonprojects.omsapi.jooq.configuration;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
 import org.jooq.impl.DefaultExecuteListenerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +30,7 @@ import javax.sql.DataSource;
  * @author lanzon-projects.
  */
 @Configuration
-@ComponentScan({"com.lanzonprojects.noteskeeper"})
+@ComponentScan({"com.lanzonprojects.omsapi"})
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class PersistenceContext {
@@ -43,14 +45,13 @@ public class PersistenceContext {
      */
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
-        org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();
+        DataSourceBuilder dataSource = DataSourceBuilder.create();
+        dataSource.url(env.getRequiredProperty("db.url"));
+        dataSource.username(env.getRequiredProperty("db.user"));
+        dataSource.password(env.getRequiredProperty("db.password"));
+        dataSource.driverClassName(env.getRequiredProperty("db.driver"));
 
-        dataSource.setUrl(env.getRequiredProperty("db.url"));
-        dataSource.setUsername(env.getRequiredProperty("db.user"));
-        dataSource.setPassword(env.getRequiredProperty("db.password"));
-        dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
-
-        return dataSource;
+        return dataSource.build();
     }
 
     /**

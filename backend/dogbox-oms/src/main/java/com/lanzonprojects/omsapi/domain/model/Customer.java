@@ -1,6 +1,5 @@
 package com.lanzonprojects.omsapi.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.crnk.core.resource.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -35,7 +34,7 @@ public class Customer {
     @Length(max = 20)
     private String postCode;
 
-    @JsonApiRelation(opposite = "dogs", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<Dog> dogs;
 
     public long getId() {
