@@ -24,8 +24,7 @@ public class Dog {
     @Length(max = 45)
     private String name;
 
-    @JsonApiRelationId
-    private long breedId;
+    private int breedId;
 
     @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private Breed breed;
@@ -79,7 +78,6 @@ public class Dog {
     }
 
     public void setBreed(Breed breed) {
-        this.breedId = breed != null ? breed.getId() : null;
         this.breed = breed;
     }
 
@@ -115,13 +113,12 @@ public class Dog {
         this.behaviouralProblems = behaviouralProblems;
     }
 
-    public long getBreedId() {
+    public int getBreedId() {
         return breedId;
     }
 
-    public void setBreedId(long breedId) {
+    public void setBreedId(int breedId) {
         this.breedId = breedId;
-        this.breed = null;
     }
 
     @Override

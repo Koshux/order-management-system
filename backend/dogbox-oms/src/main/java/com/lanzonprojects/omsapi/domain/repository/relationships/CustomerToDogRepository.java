@@ -1,6 +1,5 @@
 package com.lanzonprojects.omsapi.domain.repository.relationships;
 
-import com.lanzonprojects.omsapi.domain.model.Customer;
 import com.lanzonprojects.omsapi.domain.model.Dog;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ManyRelationshipRepositoryBase;
@@ -13,11 +12,9 @@ import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.lanzonprojects.omsapi.jooq.generated.tables.CustomersDogs.CUSTOMERS_DOGS;
 import static com.lanzonprojects.omsapi.jooq.generated.tables.Dogs.DOGS;
@@ -27,6 +24,7 @@ import static com.lanzonprojects.omsapi.jooq.generated.tables.Dogs.DOGS;
  */
 @Repository
 public class CustomerToDogRepository extends ManyRelationshipRepositoryBase<Object, Long, Dog, Long> {
+
     @Autowired
     private DSLContext dsl;
 
@@ -36,7 +34,6 @@ public class CustomerToDogRepository extends ManyRelationshipRepositoryBase<Obje
 
     @Override
     public RelationshipMatcher getMatcher() {
-        // return new RelationshipMatcher().rule().field("customerDogs").target(Dog.class).add();
         return new RelationshipMatcher().rule().target(Dog.class).add();
     }
 
