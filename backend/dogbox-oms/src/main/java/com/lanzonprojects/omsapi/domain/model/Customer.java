@@ -29,7 +29,13 @@ public class Customer {
     private String houseName;
 
     @Length(max = 35)
-    private String streetName;
+    private String addrLine1;
+
+    @Length(max = 35)
+    private String addrLine2;
+
+    @Length(max = 35)
+    private String addrLine3;
 
     @Length(max = 20)
     private String postCode;
@@ -77,12 +83,28 @@ public class Customer {
         this.houseName = houseName;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getAddrLine1() {
+        return addrLine1;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public void setAddrLine1(String addrLine1) {
+        this.addrLine1 = addrLine1;
+    }
+
+    public String getAddrLine2() {
+        return addrLine2;
+    }
+
+    public void setAddrLine2(String addrLine2) {
+        this.addrLine2 = addrLine2;
+    }
+
+    public String getAddrLine3() {
+        return addrLine3;
+    }
+
+    public void setAddrLine3(String addrLine3) {
+        this.addrLine3 = addrLine3;
     }
 
     public String getPostCode() {
@@ -109,7 +131,9 @@ public class Customer {
         sb.append(", name='").append(name).append('\'');
         sb.append(", phoneNumber='").append(phoneNumber).append('\'');
         sb.append(", houseName='").append(houseName).append('\'');
-        sb.append(", streetName='").append(streetName).append('\'');
+        sb.append(", addrLine1='").append(addrLine1).append('\'');
+        sb.append(", addrLine2='").append(addrLine2).append('\'');
+        sb.append(", addrLine3='").append(addrLine3).append('\'');
         sb.append(", postCode='").append(postCode).append('\'');
         sb.append(", dogs=").append(dogs);
         sb.append('}');

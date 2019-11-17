@@ -30,7 +30,16 @@ public class Dog {
     private Breed breed;
 
     @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<DogInfo> dogsInformation;
+    private List<Allergy> allergies;
+
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    private List<ToyType> toysTypes;
+
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    private List<HealthIssue> healthIssues;
+
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    private List<BehaviouralProblem> behaviouralProblems;
 
     public long getId() {
         return id;
@@ -80,12 +89,36 @@ public class Dog {
         this.breedId = breedId;
     }
 
-    public List<DogInfo> getDogsInformation() {
-        return dogsInformation;
+    public List<Allergy> getAllergies() {
+        return allergies;
     }
 
-    public void setDogsInformation(List<DogInfo> dogsInformation) {
-        this.dogsInformation = dogsInformation;
+    public void setAllergies(List<Allergy> allergies) {
+        this.allergies = allergies;
+    }
+
+    public List<ToyType> getToysTypes() {
+        return toysTypes;
+    }
+
+    public void setToysTypes(List<ToyType> toysTypes) {
+        this.toysTypes = toysTypes;
+    }
+
+    public List<HealthIssue> getHealthIssues() {
+        return healthIssues;
+    }
+
+    public void setHealthIssues(List<HealthIssue> healthIssues) {
+        this.healthIssues = healthIssues;
+    }
+
+    public List<BehaviouralProblem> getBehaviouralProblems() {
+        return behaviouralProblems;
+    }
+
+    public void setBehaviouralProblems(List<BehaviouralProblem> behaviouralProblems) {
+        this.behaviouralProblems = behaviouralProblems;
     }
 
     @Override
@@ -97,7 +130,10 @@ public class Dog {
         sb.append(", name='").append(name).append('\'');
         sb.append(", breedId=").append(breedId);
         sb.append(", breed=").append(breed);
-        sb.append(", dogsInformation=").append(dogsInformation);
+        sb.append(", allergies=").append(allergies);
+        sb.append(", toysTypes=").append(toysTypes);
+        sb.append(", healthIssues=").append(healthIssues);
+        sb.append(", behaviouralProblems=").append(behaviouralProblems);
         sb.append('}');
         return sb.toString();
     }
