@@ -24,22 +24,14 @@ public class Dog {
     @Length(max = 45)
     private String name;
 
+    @JsonApiRelationId
     private int breedId;
 
-    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    @JsonApiRelation(idField = "breedId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private Breed breed;
 
-    @JsonApiRelation//(mappedBy = "dogAllergies", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<Allergy> allergies;
-
-    @JsonApiRelation//(mappedBy = "dogToysTypes", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<ToyType> toysTypes;
-
-    @JsonApiRelation//(mappedBy = "dogHealthIssues", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<HealthIssue> healthIssues;
-
-    @JsonApiRelation//(mappedBy = "dogBehaviouralProblems", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<BehaviouralProblem> behaviouralProblems;
+    @JsonApiRelation(idField = "id", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    private List<DogInfo> dogsInformation;
 
     public long getId() {
         return id;
@@ -81,44 +73,20 @@ public class Dog {
         this.breed = breed;
     }
 
-    public List<Allergy> getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(List<Allergy> allergies) {
-        this.allergies = allergies;
-    }
-
-    public List<ToyType> getToysTypes() {
-        return toysTypes;
-    }
-
-    public void setToysTypes(List<ToyType> toysTypes) {
-        this.toysTypes = toysTypes;
-    }
-
-    public List<HealthIssue> getHealthIssues() {
-        return healthIssues;
-    }
-
-    public void setHealthIssues(List<HealthIssue> healthIssues) {
-        this.healthIssues = healthIssues;
-    }
-
-    public List<BehaviouralProblem> getBehaviouralProblems() {
-        return behaviouralProblems;
-    }
-
-    public void setBehaviouralProblems(List<BehaviouralProblem> behaviouralProblems) {
-        this.behaviouralProblems = behaviouralProblems;
-    }
-
     public int getBreedId() {
         return breedId;
     }
 
     public void setBreedId(int breedId) {
         this.breedId = breedId;
+    }
+
+    public List<DogInfo> getDogsInformation() {
+        return dogsInformation;
+    }
+
+    public void setDogsInformation(List<DogInfo> dogsInformation) {
+        this.dogsInformation = dogsInformation;
     }
 
     @Override
@@ -129,11 +97,8 @@ public class Dog {
         sb.append(", limitCalories=").append(limitCalories);
         sb.append(", name='").append(name).append('\'');
         sb.append(", breedId=").append(breedId);
-        sb.append(", breeds=").append(breed);
-        sb.append(", allergies=").append(allergies);
-        sb.append(", toysTypes=").append(toysTypes);
-        sb.append(", healthIssues=").append(healthIssues);
-        sb.append(", behaviouralProblems=").append(behaviouralProblems);
+        sb.append(", breed=").append(breed);
+        sb.append(", dogsInformation=").append(dogsInformation);
         sb.append('}');
         return sb.toString();
     }

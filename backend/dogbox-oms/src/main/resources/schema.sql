@@ -209,7 +209,7 @@ CREATE TABLE dogs_information (
     allergy_id              INT NOT NULL,
     toy_type_id             INT NOT NULL,
     health_issue_id         INT NOT NULL,
-    behioural_problem_id    INT NOT NULL,
+    behavioural_problem_id    INT NOT NULL,
 
     PRIMARY KEY(dog_id),
     CONSTRAINT fk_dogs_information_dog FOREIGN KEY (dog_id)
@@ -220,7 +220,7 @@ CREATE TABLE dogs_information (
         REFERENCES allergies (id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_dogs_information_health_issue FOREIGN KEY (health_issue_id)
         REFERENCES health_issues (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_dogs_information_behavioural_problem FOREIGN KEY (behioural_problem_id)
+    CONSTRAINT fk_dogs_information_behavioural_problem FOREIGN KEY (behavioural_problem_id)
         REFERENCES behavioural_problems (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
