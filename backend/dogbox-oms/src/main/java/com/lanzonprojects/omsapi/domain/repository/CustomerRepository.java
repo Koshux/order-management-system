@@ -44,7 +44,7 @@ public class CustomerRepository extends ResourceRepositoryBase<Customer, Long> {
     }
 
     @Override
-    public synchronized void delete(Long id) {
+    public void delete(Long id) {
         int execute = dslContext
                 .deleteFrom(Customers.CUSTOMERS)
                 .where(Customers.CUSTOMERS.ID.equal(Math.toIntExact(id)))
