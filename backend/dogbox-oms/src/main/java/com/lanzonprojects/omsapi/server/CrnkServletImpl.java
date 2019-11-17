@@ -24,7 +24,6 @@ public class CrnkServletImpl extends CrnkServlet {
     @Override
     protected void initCrnk(CrnkBoot boot) {
         boot.setDefaultPageLimit(20L);
-        boot.setWebPathPrefix("/api");
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, true);

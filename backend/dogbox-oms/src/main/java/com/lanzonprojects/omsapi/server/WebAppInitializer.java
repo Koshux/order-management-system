@@ -20,7 +20,6 @@ public class WebAppInitializer implements ServletContextInitializer {
     public void onStartup(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.setServletContext(servletContext);
-//        servletContext.addListener(new ContextLoaderListener());
         servletContext.addListener(new RequestContextListener());
 
         ServletRegistration.Dynamic crnkServlet = servletContext.addServlet("crnkServlet", new CrnkServletImpl());
