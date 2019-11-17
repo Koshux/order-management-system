@@ -33,7 +33,7 @@ public class DogInfo {
     @JsonApiRelation(idField = "healthIssueId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private HealthIssue healthIssue;
 
-    @JsonApiRelation(idField = "behaviouralProblemsId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    @JsonApiRelation(idField = "behaviouralProblemId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private BehaviouralProblem behaviouralProblem;
 
     public long getDogId() {

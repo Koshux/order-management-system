@@ -24,13 +24,12 @@ public class Dog {
     @Length(max = 45)
     private String name;
 
-    @JsonApiRelationId
     private int breedId;
 
-    @JsonApiRelation(idField = "breedId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private Breed breed;
 
-    @JsonApiRelation(idField = "id", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
+    @JsonApiRelation(lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
     private List<DogInfo> dogsInformation;
 
     public long getId() {
