@@ -183,9 +183,9 @@ CREATE TABLE customers (
     NAME            VARCHAR(100)    NOT NULL,
     phone_number    VARCHAR(12)     NOT NULL,
     house_name      VARCHAR(20)     NOT NULL,
-    addr_line_1     VARCHAR(35)     NOT NULL,
-    addr_line_2     VARCHAR(35)     NOT NULL,
-    addr_line_3     VARCHAR(35)     NOT NULL,
+    addr_line1      VARCHAR(35)     NOT NULL,
+    addr_line2      VARCHAR(35)     NOT NULL,
+    addr_line3      VARCHAR(35)     NOT NULL,
     post_code       VARCHAR(20)     NOT NULL,
 
     PRIMARY KEY(id)
@@ -203,25 +203,52 @@ CREATE TABLE dogs (
     CONSTRAINT fk_dogs_breed FOREIGN KEY (breed_id) REFERENCES breeds (id)
 );
 
-DROP TABLE IF EXISTS dogs_information;
-CREATE TABLE dogs_information (
-    dog_id                  INT NOT NULL,
-    allergy_id              INT NOT NULL,
-    toy_type_id             INT NOT NULL,
-    health_issue_id         INT NOT NULL,
-    behavioural_problem_id    INT NOT NULL,
+DROP TABLE IF EXISTS dogs_allergies;
+CREATE TABLE dogs_allergies (
+    dog_id       INT     NOT NULL,
+    allergy_id   INT     NOT NULL,
 
-    PRIMARY KEY(dog_id, allergy_id, toy_type_id, health_issue_id, behavioural_problem_id),
-    CONSTRAINT fk_dogs_information_dog FOREIGN KEY (dog_id)
+    PRIMARY KEY(dog_id, allergy_id),
+    CONSTRAINT fk_dogs_allergies_dog FOREIGN KEY (dog_id)
         REFERENCES dogs (id),
-    CONSTRAINT fk_dogs_information_allergy FOREIGN KEY (allergy_id)
-        REFERENCES allergies (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_dogs_information_toy_type FOREIGN KEY (allergy_id)
-        REFERENCES allergies (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_dogs_information_health_issue FOREIGN KEY (health_issue_id)
-        REFERENCES health_issues (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_dogs_information_behavioural_problem FOREIGN KEY (behavioural_problem_id)
+    CONSTRAINT fk_dogs_allergies_allergy FOREIGN KEY (allergy_id)
+        REFERENCES allergies (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS dogs_behavioural_problems;
+CREATE TABLE dogs_behavioural_problems (
+    dog_id                  INT     NOT NULL,
+    behaviour_problem_id    INT     NOT NULL,
+
+    PRIMARY KEY(dog_id, behaviour_problem_id),
+    CONSTRAINT fk_dogs_behavioural_problems_dog FOREIGN KEY (dog_id)
+        REFERENCES dogs (id),
+    CONSTRAINT fk_dogs_behavioural_problems_behaviour_problem FOREIGN KEY (behaviour_problem_id)
         REFERENCES behavioural_problems (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS dogs_health_issues;
+CREATE TABLE dogs_health_issues (
+    dog_id             INT     NOT NULL,
+    health_issue_id    INT     NOT NULL,
+
+    PRIMARY KEY(dog_id, health_issue_id),
+    CONSTRAINT fk_dogs_health_issues_dog FOREIGN KEY (dog_id)
+        REFERENCES dogs (id),
+    CONSTRAINT fk_dogs_health_issues_health_issue FOREIGN KEY (health_issue_id)
+        REFERENCES health_issues (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS dogs_toy_types;
+CREATE TABLE dogs_toy_types (
+    dog_id         INT     NOT NULL,
+    toy_type_id    INT     NOT NULL,
+
+    PRIMARY KEY(dog_id, toy_type_id),
+    CONSTRAINT fk_dogs_toy_types_dog FOREIGN KEY (dog_id)
+        REFERENCES dogs (id),
+    CONSTRAINT fk_dogs_toy_types_toy_type FOREIGN KEY (toy_type_id)
+        REFERENCES toy_types (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS products_ingredients;

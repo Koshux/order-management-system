@@ -20,7 +20,7 @@ VALUES
 ('Puppy', 2200, 'Sherry', 3),
 ('Mid-age', 1900, 'Fasco', 2);
 
-INSERT INTO customers (CREATION_DATE, NAME, PHONE_NUMBER, HOUSE_NAME, ADDR_LINE_1, ADDR_LINE_2, ADDR_LINE_3, POST_CODE)
+INSERT INTO customers (CREATION_DATE, NAME, PHONE_NUMBER, HOUSE_NAME, ADDR_LINE1, ADDR_LINE2, ADDR_LINE3, POST_CODE)
 VALUES
 ('2019-08-18 20:59:59', 'Chris', '+35699112233', 'Friggieri', 'Triq Sannat', 'Kristu Rxoxt', 'Terapija', 'SNT1553');
 
@@ -32,8 +32,7 @@ VALUES
 INSERT INTO allergies
 VALUES
 (1, 'Beef'),
-(2, 'Dairy'),
-(999, 'None');
+(2, 'Dairy');
 
 INSERT INTO behavioural_problems
 VALUES
@@ -42,17 +41,32 @@ VALUES
 
 INSERT INTO health_issues
 VALUES
-(1, 'Flees'),
-(999, 'None');
+(1, 'Flees');
 
 INSERT INTO toy_types
 VALUES
 (1, 'Chicken Bone'),
-(2, 'Squeezy Ball'),
-(999, 'None');
+(2, 'Squeezy Ball');
 
-INSERT INTO dogs_information
+INSERT INTO dogs_allergies
 VALUES
-(1, 1, 1, 1, 1),
-(1, 2, 2, 999, 999);
+(1, 1),
+(1, 2),
+(2, 2),
+(3, 1);
+
+INSERT INTO dogs_behavioural_problems
+VALUES
+(1, 1),
+(2, 1);
+
+INSERT INTO dogs_health_issues
+VALUES
+(3, 1);
+
+INSERT INTO dogs_toy_types
+VALUES
+(1, 1),
+(2, 2),
+(3, 1);
 
