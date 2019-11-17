@@ -36,23 +36,9 @@ public class DogRepository extends ResourceRepositoryBase<Dog, Long> {
                 .select(Dogs.DOGS.ID, Dogs.DOGS.AGE, Dogs.DOGS.LIMITCALORIES, Dogs.DOGS.NAME)
                 .from(Dogs.DOGS)
                 .fetchInto(Dog.class);
-        /*final List<Dog> dogsList = dogs
-                .stream()
-                .map(dog -> {
-                    Dog doggy = new Dog();
-                    *//*doggy.setAge(dog.getValue(Dogs.DOGS.AGE));*//*
-                    doggy.setLimitCalories(Integer.parseInt(dog.getValue(Dogs.DOGS.LIMITCALORIES)));
-                    return doggy;
-                })
-                .collect(Collectors.toList());*/
+
         LOGGER.debug("Found notes: {}", dogs);
-
         return querySpec.apply(dogs);
-    }
-
-    @Override
-    public <S extends Dog> S create(S entity) {
-        return null;
     }
 
     @Override

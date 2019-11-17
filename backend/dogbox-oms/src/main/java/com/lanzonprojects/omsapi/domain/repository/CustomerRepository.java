@@ -39,11 +39,6 @@ public class CustomerRepository extends ResourceRepositoryBase<Customer, Long> {
     }
 
     @Override
-    public <S extends Customer> S create(S entity) {
-        return null;
-    }
-
-    @Override
     public void delete(Long id) {
         int execute = dslContext
                 .deleteFrom(Customers.CUSTOMERS)

@@ -2,6 +2,7 @@ package com.lanzonprojects.omsapi.domain.repository;
 
 import com.lanzonprojects.omsapi.domain.model.Customer;
 import com.lanzonprojects.omsapi.domain.model.DogInfo;
+import com.lanzonprojects.omsapi.jooq.generated.tables.DogsInformation;
 import io.crnk.core.exception.InternalServerErrorException;
 import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.ResourceRepositoryBase;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static com.lanzonprojects.omsapi.jooq.generated.tables.DogsInformation.DOGS_INFORMATION;
 
 /**
  * @author lanzon-projects.
@@ -32,25 +35,16 @@ public class DogInfoRepository extends ResourceRepositoryBase<DogInfo, Long> {
 
     @Override
     public ResourceList<DogInfo> findAll(QuerySpec querySpec) {
-        final List<DogInfo> dogsInfo = dslContext
-                .select()
-                .from(DogsInformation.DOGS_INFORMATION)
-                .fetchInto(DogInfo.class);
-
+        final List<DogInfo> dogsInfo = dslContext.select().from(DOGS_INFORMATION).fetchInto(DogInfo.class);
         LOGGER.debug("Found notes: {}", dogsInfo);
         return querySpec.apply(dogsInfo);
     }
 
     @Override
-    public <S extends DogInfo> S create(S entity) {
-        return null;
-    }
-
-    @Override
     public void delete(Long id) {
         int execute = dslContext
-                .deleteFrom(DogsInformation.DOGS_INFORMATION)
-                .where(DogsInformation.DOGS_INFORMATION.DOG_ID.equal(Math.toIntExact(id)))
+                .deleteFrom(DOGS_INFORMATION)
+                .where(DOGS_INFORMATION.DOG_ID.equal(Math.toIntExact(id)))
                 .execute();
 
         if (execute == 0) {
