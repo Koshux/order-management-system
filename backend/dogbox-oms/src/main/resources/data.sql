@@ -48,7 +48,7 @@ VALUES
 INSERT INTO toy_types
 VALUES
 (1, 'Chicken Bone'),
-(1, 'Squeezy Ball'),
+(2, 'Squeezy Ball'),
 (999, 'None');
 
 INSERT INTO dogs_information
