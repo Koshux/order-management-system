@@ -9,6 +9,8 @@ import io.crnk.core.resource.list.ResourceList;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +26,7 @@ import static com.lanzonprojects.omsapi.jooq.generated.tables.Dogs.DOGS;
  */
 @Repository
 public class CustomerToDogRepository extends ManyRelationshipRepositoryBase<Object, Long, Dog, Long> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerToDogRepository.class);
 
     @Autowired
     private DSLContext dsl;
@@ -62,6 +65,7 @@ public class CustomerToDogRepository extends ManyRelationshipRepositoryBase<Obje
             map.put(sourceId, customersDogsList);
         });
 
+        LOGGER.debug("Found customers-dogs: {}", map);
         return map;
     }
 }

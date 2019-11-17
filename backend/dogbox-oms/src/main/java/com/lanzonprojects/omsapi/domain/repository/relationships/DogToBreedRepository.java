@@ -6,6 +6,8 @@ import io.crnk.core.queryspec.QuerySpec;
 import io.crnk.core.repository.OneRelationshipRepositoryBase;
 import io.crnk.core.repository.RelationshipMatcher;
 import org.jooq.DSLContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +22,7 @@ import static com.lanzonprojects.omsapi.jooq.generated.tables.Breeds.BREEDS;
  */
 @Repository
 public class DogToBreedRepository extends OneRelationshipRepositoryBase<Object, Long, Breed, Long> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DogToBreedRepository.class);
 
     @Autowired
     private DSLContext dsl;
@@ -47,6 +50,7 @@ public class DogToBreedRepository extends OneRelationshipRepositoryBase<Object, 
             map.put(sourceId, breed);
         });
 
+        LOGGER.debug("Found breeds: {}", map);
         return map;
     }
 }
