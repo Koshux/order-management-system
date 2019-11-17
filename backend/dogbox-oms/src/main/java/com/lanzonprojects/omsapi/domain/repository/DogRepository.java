@@ -56,7 +56,7 @@ public class DogRepository extends ResourceRepositoryBase<Dog, Long> {
     }
 
     @Override
-    public svoid delete(Long id) {
+    public void delete(Long id) {
         int execute = dslContext
                 .deleteFrom(Dogs.DOGS)
                 .where(Dogs.DOGS.ID.equal(Math.toIntExact(id)))

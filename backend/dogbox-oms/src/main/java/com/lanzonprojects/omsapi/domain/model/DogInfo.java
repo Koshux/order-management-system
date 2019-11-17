@@ -2,8 +2,6 @@ package com.lanzonprojects.omsapi.domain.model;
 
 import io.crnk.core.resource.annotations.*;
 
-import java.util.List;
-
 /**
  * @author lanzon-projects.
  */
@@ -24,19 +22,19 @@ public class DogInfo {
     private int healthIssueId;
 
     @JsonApiRelationId
-    private int behaviouralProblemsId;
+    private int behaviouralProblemId;
 
     @JsonApiRelation(idField = "allergyId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<Allergy> allergies;
+    private Allergy allergy;
 
     @JsonApiRelation(idField = "toyTypeId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<ToyType> toysTypes;
+    private ToyType toysType;
 
     @JsonApiRelation(idField = "healthIssueId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<HealthIssue> healthIssues;
+    private HealthIssue healthIssue;
 
     @JsonApiRelation(idField = "behaviouralProblemsId", lookUp = LookupIncludeBehavior.AUTOMATICALLY_ALWAYS)
-    private List<BehaviouralProblem> behaviouralProblems;
+    private BehaviouralProblem behaviouralProblem;
 
     public long getDogId() {
         return dogId;
@@ -70,44 +68,44 @@ public class DogInfo {
         this.healthIssueId = healthIssueId;
     }
 
-    public int getBehaviouralProblemsId() {
-        return behaviouralProblemsId;
+    public int getBehaviouralProblemId() {
+        return behaviouralProblemId;
     }
 
-    public void setBehaviouralProblemsId(int behaviouralProblemsId) {
-        this.behaviouralProblemsId = behaviouralProblemsId;
+    public void setBehaviouralProblemId(int behaviouralProblemId) {
+        this.behaviouralProblemId = behaviouralProblemId;
     }
 
-    public List<Allergy> getAllergies() {
-        return allergies;
+    public Allergy getAllergy() {
+        return allergy;
     }
 
-    public void setAllergies(List<Allergy> allergies) {
-        this.allergies = allergies;
+    public void setAllergy(Allergy allergy) {
+        this.allergy = allergy;
     }
 
-    public List<ToyType> getToysTypes() {
-        return toysTypes;
+    public ToyType getToysType() {
+        return toysType;
     }
 
-    public void setToysTypes(List<ToyType> toysTypes) {
-        this.toysTypes = toysTypes;
+    public void setToysType(ToyType toysType) {
+        this.toysType = toysType;
     }
 
-    public List<HealthIssue> getHealthIssues() {
-        return healthIssues;
+    public HealthIssue getHealthIssue() {
+        return healthIssue;
     }
 
-    public void setHealthIssues(List<HealthIssue> healthIssues) {
-        this.healthIssues = healthIssues;
+    public void setHealthIssue(HealthIssue healthIssue) {
+        this.healthIssue = healthIssue;
     }
 
-    public List<BehaviouralProblem> getBehaviouralProblems() {
-        return behaviouralProblems;
+    public BehaviouralProblem getBehaviouralProblem() {
+        return behaviouralProblem;
     }
 
-    public void setBehaviouralProblems(List<BehaviouralProblem> behaviouralProblems) {
-        this.behaviouralProblems = behaviouralProblems;
+    public void setBehaviouralProblem(BehaviouralProblem behaviouralProblem) {
+        this.behaviouralProblem = behaviouralProblem;
     }
 
     @Override
@@ -117,11 +115,11 @@ public class DogInfo {
         sb.append(", allergyId=").append(allergyId);
         sb.append(", toyTypeId=").append(toyTypeId);
         sb.append(", healthIssueId=").append(healthIssueId);
-        sb.append(", behaviouralProblemsId=").append(behaviouralProblemsId);
-        sb.append(", allergies=").append(allergies);
-        sb.append(", toysTypes=").append(toysTypes);
-        sb.append(", healthIssues=").append(healthIssues);
-        sb.append(", behaviouralProblems=").append(behaviouralProblems);
+        sb.append(", behaviouralProblemId=").append(behaviouralProblemId);
+        sb.append(", allergy=").append(allergy);
+        sb.append(", toysType=").append(toysType);
+        sb.append(", healthIssue=").append(healthIssue);
+        sb.append(", behaviouralProblem=").append(behaviouralProblem);
         sb.append('}');
         return sb.toString();
     }
