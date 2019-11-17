@@ -20,9 +20,6 @@ public class Product {
     private String name;
 
     @Length(max = 100)
-    private String brand;
-
-    @Length(max = 100)
     private String weight;
 
     @Length(max = 500)
@@ -35,7 +32,13 @@ public class Product {
     private Size size;
 
     @JsonApiRelation
+    private Brand brand;
+
+    @JsonApiRelation
     private Flavour flavour;
+
+    @JsonApiRelation
+    private Supplier supplier;
 
     @JsonApiRelation
     private ProductType productType;
@@ -65,14 +68,6 @@ public class Product {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getWeight() {
         return weight;
     }
@@ -95,6 +90,46 @@ public class Product {
 
     public void setSku(String sku) {
         this.sku = sku;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    public Flavour getFlavour() {
+        return flavour;
+    }
+
+    public void setFlavour(Flavour flavour) {
+        this.flavour = flavour;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
     public FinancialInfo getFinancialInfo() {
@@ -121,45 +156,22 @@ public class Product {
         this.suitabilityInfo = suitabilityInfo;
     }
 
-    public Size getSize() {
-        return size;
-    }
-
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
-    public Flavour getFlavour() {
-        return flavour;
-    }
-
-    public void setFlavour(Flavour flavour) {
-        this.flavour = flavour;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Product{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", brand='").append(brand).append('\'');
         sb.append(", weight='").append(weight).append('\'');
         sb.append(", notes='").append(notes).append('\'');
         sb.append(", sku='").append(sku).append('\'');
+        sb.append(", size=").append(size);
+        sb.append(", flavour=").append(flavour);
+        sb.append(", supplier=").append(supplier);
+        sb.append(", brand=").append(brand);
+        sb.append(", productType=").append(productType);
         sb.append(", financialInfo=").append(financialInfo);
         sb.append(", nutritionalInfo=").append(nutritionalInfo);
         sb.append(", suitabilityInfo=").append(suitabilityInfo);
-        sb.append(", size=").append(size);
-        sb.append(", flavour=").append(flavour);
-        sb.append(", productType=").append(productType);
         sb.append('}');
         return sb.toString();
     }

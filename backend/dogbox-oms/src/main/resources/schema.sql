@@ -25,6 +25,14 @@ CREATE TABLE behavioural_problems (
     PRIMARY KEY(id)
 );
 
+DROP TABLE IF EXISTS brands;
+CREATE TABLE brands (
+    id     INT            NOT NULL AUTO_INCREMENT,
+    NAME   VARCHAR(50)    NOT NULL,
+
+    PRIMARY KEY(id)
+);
+
 DROP TABLE IF EXISTS EVENTS;
 CREATE TABLE EVENTS (
     id     INT            NOT NULL AUTO_INCREMENT,
