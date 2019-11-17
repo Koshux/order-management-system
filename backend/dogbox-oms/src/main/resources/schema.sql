@@ -211,7 +211,7 @@ CREATE TABLE dogs_information (
     health_issue_id         INT NOT NULL,
     behavioural_problem_id    INT NOT NULL,
 
-    PRIMARY KEY(dog_id),
+    PRIMARY KEY(dog_id, allergy_id, toy_type_id, health_issue_id, behavioural_problem_id),
     CONSTRAINT fk_dogs_information_dog FOREIGN KEY (dog_id)
         REFERENCES dogs (id),
     CONSTRAINT fk_dogs_information_allergy FOREIGN KEY (allergy_id)

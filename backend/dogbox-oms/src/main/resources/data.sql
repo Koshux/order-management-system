@@ -28,3 +28,31 @@ INSERT INTO customers_dogs (DOG_ID, CUSTOMER_ID)
 VALUES
 (1, 1),
 (2, 1);
+
+INSERT INTO allergies
+VALUES
+(1, 'Beef'),
+(2, 'Dairy'),
+(999, 'None');
+
+INSERT INTO behavioural_problems
+VALUES
+(1, 'Barking'),
+(999, 'None');
+
+INSERT INTO health_issues
+VALUES
+(1, 'Flees'),
+(999, 'None');
+
+INSERT INTO toy_types
+VALUES
+(1, 'Chicken Bone'),
+(1, 'Squeezy Ball'),
+(999, 'None');
+
+INSERT INTO dogs_information
+VALUES
+(1, 1, 1, 1, 1),
+(1, 2, 2, 999, 999);
+
