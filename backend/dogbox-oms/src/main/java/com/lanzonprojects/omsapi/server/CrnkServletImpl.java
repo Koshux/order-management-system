@@ -45,13 +45,4 @@ public class CrnkServletImpl extends CrnkServlet {
         metaModuleConfig.addMetaProvider(new ResourceMetaProvider());
         boot.addModule(MetaModule.createServerModule(metaModuleConfig));
     }
-
-//    @RequestMapping("/resources-info")
-//    public Map<String, String> getResources() {
-//        return this.crnkBoot.getResourceRegistry()
-//                .getEntries()
-//                .stream()
-//                .collect(Collectors.toMap(entry -> entry.getResourceInformation().getResourceType(),
-//                        entry -> this.crnkBoot.getResourceRegistry().getResourceUrl(entry.getResourceInformation())));
-//    }
 }
