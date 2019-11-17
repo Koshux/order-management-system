@@ -1,6 +1,6 @@
 HELP.md
 target/
-src/main/java/com/lanzonprojects/noteskeeper/jooq/generated/**
+src/main/java/com/lanzonprojects/omsapi/jooq/generated/**
 !.mvn/wrapper/maven-wrapper.jar
 #!**/src/main/**
 !**/src/test/**
