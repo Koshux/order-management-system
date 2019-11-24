@@ -22,6 +22,7 @@ export default {
     // Update the the payload to be sent.
     headers.body = requestOpts
 
+    console.log('yo')
     // Send the note.
     return fetch(this.ENDPOINT, headers).then(response => response.json())
   },
@@ -54,7 +55,7 @@ export default {
         .then(response => response.json())
         .then(result => {
           // Return the promise to show no records (or due to some failure).
-          if (result == null || result.error != null) {
+          if (result == null || result.errors != null) {
             return resolve({
               data: [],
               page: 0,
@@ -62,6 +63,7 @@ export default {
             })
           }
 
+          console.log('result:', result)
           const notes = result.data.reduce((notes, { attributes }) => {
             notes.push({
               description: attributes.description,

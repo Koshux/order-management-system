@@ -17,6 +17,7 @@ export default function Send (props) {
 
   // Save the note to the DB.
   const handleClick = () => {
+    console.log('clicked')
     return Utils.createNote(JSON.stringify(setupRequestData())).then(() => {
       // Refresh the notes datatable.
       props.materialTableRef.current &&
