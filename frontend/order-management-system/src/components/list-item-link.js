@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import { Link as RouterLink } from 'react-router-dom'
 
 function ListItemLink (props) {
-  const { icon, primary, to } = props
+  const { icon, primary, to, alt } = props
 
   const renderLink = React.useMemo(
     () => React.forwardRef((itemProps, ref) => (
@@ -18,7 +18,7 @@ function ListItemLink (props) {
   return (
     <li>
       <ListItem button component={renderLink}>
-        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemIcon alt={alt} aria-label={alt}>{icon}</ListItemIcon>
         <ListItemText primary={primary} />
       </ListItem>
     </li>

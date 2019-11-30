@@ -6,6 +6,7 @@ import React from 'react'
 import ListItemLink from './list-item-link'
 import IndexPage from '../pages/index'
 import Orders from '../pages/orders'
+import Products from '../pages/products'
 import Suppliers from '../pages/suppliers'
 import Customers from '../pages/customers'
 
@@ -16,17 +17,21 @@ import PeopleIcon from '@material-ui/icons/People'
 import ListAltIcon from '@material-ui/icons/ListAlt'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar'
+import AccountBalanceSharpIcon from '@material-ui/icons/AccountBalanceSharp'
 
 // mui-core
 import List from '@material-ui/core/List'
 import Paper from '@material-ui/core/Paper'
-import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
+import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
-import Typography from '@material-ui/core/Typography'
+import Toolbar from '@material-ui/core/Toolbar'
+import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
 import CssBaseline from '@material-ui/core/CssBaseline'
+
+// mui-styles
 import { makeStyles } from '@material-ui/core/styles'
 
 import {
@@ -163,10 +168,21 @@ export default function LeftDrawerRouter(props) {
           <div className={classes.root}>
             <Paper elevation={0}>
               <List aria-label="All pages for DogBox management system">
-                <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
-                <ListItemLink to="/orders" primary="Orders" icon={<ListAltIcon />} />
-                <ListItemLink to="/suppliers" primary="Suppliers" icon={<PermContactCalendarIcon />} />
-                <ListItemLink to="/customers" primary="Customers" icon={<PeopleIcon />} />
+                <Tooltip title="Dashboard" arrow>
+                  <ListItemLink to="/" primary="Home" icon={<HomeIcon />} alt="Dashboard" />
+                </Tooltip>
+                <Tooltip title="Orders" arrow>
+                  <ListItemLink to="/orders" primary="Orders" icon={<ListAltIcon />} alt="Orders" />
+                </Tooltip>
+                <Tooltip title="Products" arrow>
+                  <ListItemLink to="/products" primary="Products" icon={<AccountBalanceSharpIcon />} alt="Products" />
+                </Tooltip>
+                <Tooltip title="Suppliers" arrow>
+                  <ListItemLink to="/suppliers" primary="Suppliers" icon={<PermContactCalendarIcon />} alt="Suppliers" />
+                </Tooltip>
+                <Tooltip title="Customers" arrow>
+                  <ListItemLink to="/customers" primary="Customers" icon={<PeopleIcon />} alt="Customers" />
+                </Tooltip>
               </List>
             </Paper>
           </div>
@@ -175,17 +191,20 @@ export default function LeftDrawerRouter(props) {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Switch>
+            <Route path="/">
+              <IndexPage materialTableRef={props.ref} />
+            </Route>
             <Route path="/orders">
               <Orders />
+            </Route>
+            <Route path="/products">
+              <Products />
             </Route>
             <Route path="/suppliers">
               <Suppliers />
             </Route>
             <Route path="/customers">
               <Customers />
-            </Route>
-            <Route path="/">
-              <IndexPage materialTableRef={props.ref} />
             </Route>
           </Switch>
         </main>

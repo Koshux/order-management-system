@@ -1,5 +1,4 @@
 import React from 'react'
-// import AppBar from '../components/app-bar'
 import Note from '../old_components/note'
 import Send from '../old_components/send'
 import DataTable from '../old_components/notes-datatable'
@@ -10,7 +9,6 @@ export default function IndexPage (props) {
 
   return (
     <>
-      {/* <AppBar materialTableRef={props.materialTableRef} /> */}
       <Grid container spacing={3}>
         <Grid item xs={12}></Grid>
 
